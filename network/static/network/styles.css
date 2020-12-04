@@ -1,0 +1,283 @@
+*{
+	font-family: 'Encode Sans', sans-serif;
+}
+
+
+body
+{
+     background-color: #98BDF4;    
+}
+
+.body
+{
+	margin-top: 100px;
+}
+
+.navbar_perso
+{
+	background: #FFFFFF;
+	height: #98BDF4;
+	height: 60px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index:1;
+}
+
+.navbar-brand
+{
+	color: #98BDF4;
+	font-weight: 900;
+	font-size: 20px;
+}
+
+.navbar a
+{
+	font-size: 15px;
+	line-height: 20px;
+	font-weight: 500;
+	/* identical to box height */
+	color: #FFFFFF;
+	margin-left: 10px;
+}
+
+.navbar a:hover
+{
+	background-color: #98BDF4;
+	color: white;
+	border-radius: 15px;
+	transition-duration: .1;
+	transition-timing-function: ease-in-out;
+}
+.navbar a:not( :hover ){ 
+	color: #0D0C0C;
+	background-color: white;
+	border-radius: 15px;
+	transition-duration: .2s;
+	transition-timing-function: ease-in-out;
+ }
+
+
+
+.sentence
+{
+	font-size: 38px;
+	margin-top: 50px;
+	padding-left:20px;
+}
+.profile_username
+{
+	font-style: normal;
+	font-weight: 900;
+	font-size: 43px;
+	line-height: 52px;
+	/* identical to box height */
+
+
+	color: #0B0A0A;
+}
+
+.profile_username_box
+{
+	width: 380px;
+	height: 80px;
+}
+
+.profile_following_box
+{
+	width: 110px;
+	height: 80.25px;
+	background-color: white;
+	flex-wrap: nowrap;
+	border-radius: 15px;
+	padding: 10px;
+
+}
+
+.profile_following_content
+{
+	font-style: normal;
+	font-weight: 300;
+	font-size: 23.4222px;
+	line-height: 24px;
+	align-items: center;
+	text-align: center;
+
+	color: #0B0A0A;
+}
+
+.newsfeed_view
+{
+	padding-top: 15px;
+	padding-bottom: 45px;
+	width: 580px;
+	height: auto;
+	border-radius: 5px;
+	background-color: white;
+	
+}
+.postbox
+{
+	width: 500px;
+	height: auto;
+	background: #FFFFFF;
+	border: 2px solid #000000;
+	box-sizing: border-box;	
+	margin-top: 15px;
+	padding: 10px;
+}
+
+.postbox_username
+{
+	max-width: 250px;
+	max-height: 43px;
+	text-align: start;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 24.7037px;
+	line-height: 29px;
+
+
+}
+
+.postbox_date
+{
+	max-width: 250px;
+	height: 14px;
+	font-family: Roboto;
+	font-style: normal;
+	font-weight: 200;
+	font-size: 10.2222px;
+	line-height: 12px;
+
+/* identical to box height */
+
+
+color: #000000;	
+}
+
+.postbox_content
+{
+	width: 490px;	
+}
+
+.buttons:hover {
+  background: #000;
+  color: #fff;
+  transition-duration: 0.1s;
+
+}
+.buttons:active {
+  top: 2px;
+}
+
+.postform
+{
+	width: 580px;
+	height: 154.05px;
+	background: #FFFFFF;
+	border: 1px solid #000000;
+	box-sizing: border-box;
+}
+
+.postform_content
+{
+	width: 500px;
+	height: 77.02px;
+	border-radius: 1px;
+	margin-top: 10px;
+}
+
+.postform_button
+{
+
+	margin-top: 10px;
+
+}
+
+
+.buttons
+{
+	width: 50px;
+	background: #0D0C0C;
+	border-radius: 5px;	
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 27px;
+	color: #FFFFFF;
+}
+
+
+.buttons_edit
+{
+	width: 50px;
+	background: #0D0C0C;
+	border: black;
+	border-radius: 5px;	
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 27px;
+	color: #FFFFFF;
+	padding: 1px;
+	margin-bottom: 2px;
+}
+.buttons_follow
+{
+	width: 90px;
+	height: 30px;
+	background: #FF2E00;
+	border-radius: 10px;	
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 27px;
+	color: #FFFFFF;
+}
+
+
+.button_like
+{
+   border:none;
+   background-color:transparent;
+   outline:none;
+   padding-bottom: 1px;
+}
+
+.like_box
+{
+	max-width:50px; 
+	display: flex;
+	flex-wrap: nowrap;
+	border:solid;
+	justify-content: center;
+	text-align: center;
+	border-radius: 5px;
+}
+
+.like_counter
+{
+	width: 25px;
+	padding-left: 5px;
+}
+
+
+.page_perso
+{
+	text-align: center;
+	color: white;
+	background-color: #0D0C0C;
+	border-radius: 10px;
+}
+
+.sentence_username
+{
+	font-size: 35px;
+	margin-top: 50px;
+	font-weight: 900;
+	color:white;
+	text-transform: uppercase;
+}

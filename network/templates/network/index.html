@@ -1,0 +1,88 @@
+{% extends "network/layout.html" %}
+
+
+{% block body %}
+
+<div class="row" style="margin-bottom: 40px;">
+	<div class="col-12 d-flex justify-content-center">
+		<div id="postform_view">
+				{% if user.is_authenticated %}
+					<div class="postform d-flex justify-content-center">
+					    <form action="send_post/" method="post" id="content" class="postform_content">
+					    	{% csrf_token %}
+					    	{{ form }}
+					    	<input type="submit" value="Post" class="buttons postform_button">
+					    </form>
+					</div>
+				{% endif%}
+		</div>
+	</div>
+</div>
+
+
+
+
+<div class="newsfeed_section d-flex justify-content-center">
+	<div id="newsfeed_view" class="newsfeed_view">
+		{% for post in post %}
+		<div class="row">
+			<div class="col-12 d-flex justify-content-center">
+				<div class="postbox">
+					{% if user.is_authenticated %}
+						<a style="color: black" href='/profile/{{post.author.id}}'><h1 class="author postbox_username">{{post.author}}</h1></a>
+					{% else %}
+						<h1 class="author postbox_username">{{post.author}}</h1>
+					{% endif %}
+					<p class="date postbox_date">{{post.date}}</p>
+					<p class="content_{{post.id}} postbox_content">{{post.content}}</p>
+					{% if post.author.id == request.user.id %}
+						<button class="edit_button buttons_edit" data-id="{{post.id}}">Edit</button>
+						<div class="edit_content_{{post.id}}" style="display: none">
+							<textarea id="edit_content_textarea_{{post.id}}" class="postform_content">{{post.content}}</textarea>
+							<button class="post_edited_content buttons_edit" data-id="{{post.id}}">Post</button>
+						</div>
+		    		{% endif %}
+		    		<div class="like_box">
+		    		<div id="like_counter_{{post.id}}" class="like_counter">{{post.likes_num}}</div>
+		    		{% if user.is_authenticated %}
+			    		{% if post.id in likes_of_user %}		    		
+				    		<button class="like_button button_like" data-id="{{post.id}}"><svg height="18" viewBox="0 -20 464 464" xmlns="http://www.w3.org/2000/svg"><path d="m340 0c-44.773438.00390625-86.066406 24.164062-108 63.199219-21.933594-39.035157-63.226562-63.19531275-108-63.199219-68.480469 0-124 63.519531-124 132 0 172 232 292 232 292s232-120 232-292c0-68.480469-55.519531-132-124-132zm0 0" fill="#ff6243"/><path d="m32 132c0-63.359375 47.550781-122.359375 108.894531-130.847656-5.597656-.769532-11.242187-1.15625025-16.894531-1.152344-68.480469 0-124 63.519531-124 132 0 172 232 292 232 292s6-3.113281 16-8.992188c-52.414062-30.824218-216-138.558593-216-283.007812zm0 0" fill="#ff5023"/>Like</svg></button>
+				    	{% else %}
+				    		<button class="like_button button_like" data-id="{{post.id}}"><svg height="18" viewBox="0 -20 480 480" xmlns="http://www.w3.org/2000/svg"><path d="m348 0c-43 .0664062-83.28125 21.039062-108 56.222656-24.71875-35.183594-65-56.1562498-108-56.222656-70.320312 0-132 65.425781-132 140 0 72.679688 41.039062 147.535156 118.6875 216.480469 35.976562 31.882812 75.441406 59.597656 117.640625 82.625 2.304687 1.1875 5.039063 1.1875 7.34375 0 42.183594-23.027344 81.636719-50.746094 117.601563-82.625 77.6875-68.945313 118.726562-143.800781 118.726562-216.480469 0-74.574219-61.679688-140-132-140zm-108 422.902344c-29.382812-16.214844-224-129.496094-224-282.902344 0-66.054688 54.199219-124 116-124 41.867188.074219 80.460938 22.660156 101.03125 59.128906 1.539062 2.351563 4.160156 3.765625 6.96875 3.765625s5.429688-1.414062 6.96875-3.765625c20.570312-36.46875 59.164062-59.054687 101.03125-59.128906 61.800781 0 116 57.945312 116 124 0 153.40625-194.617188 266.6875-224 282.902344zm0 0"/>Like</svg></button>
+				    	{% endif %}
+		    		{% endif %}
+		    		</div>
+		    	</div>
+	    	</div>
+	    </div>
+		{% endfor %}
+	</div>
+</div>
+<div class="pagination_box" style="margin-top: 20px;">
+	<div class="row">
+		<div class="col-12 d-flex justify-content-center">
+			<div class="pagination">
+		        Page {{ post.number }} of {{ post.paginator.num_pages }}.
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12 d-flex justify-content-center">
+			<div class="pagination">
+	        	{% if post.has_previous %}
+	            <a href="?page=1" class="page-link page_perso">First</a>
+	            <a class="page-link page_perso" href="?page={{ post.previous_page_number }}">Previous</a>
+	        	{% endif %}
+	        </div>
+	    </div>
+	</div>
+	<div class="row" style="margin-bottom: 5px;">
+		<div class="col-12 d-flex no-wrap justify-content-center">
+		        {% if post.has_next %}
+		            <a style="margin-right: 5px" class="page-link page_perso" href="?page={{ post.next_page_number }}">Next </a>
+		            <a class="page-link page_perso" href="?page={{ post.paginator.num_pages }}">Last</a>
+		        {% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}
